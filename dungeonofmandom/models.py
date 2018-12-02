@@ -1,3 +1,4 @@
+import datetime
 from django.conf.global_settings import MEDIA_URL
 from django.db import models
 from functools import partial
@@ -31,3 +32,9 @@ class CreatedUpdatedMixin(models.Model):
 
     class Meta:
         abstract = True
+
+    def save(self, **kwargs):
+        if not self.id:
+            self.created_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
+        super(CreatedUpdatedMixin, self).save()

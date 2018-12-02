@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from dungeonofmandom.models import NameDescMixin, CreatedUpdatedMixin
+from game.models import HeroClass, ItemClass, MonsterClass
 
 
 class Player(NameDescMixin, models.Model):
@@ -22,11 +23,8 @@ class Room(NameDescMixin, CreatedUpdatedMixin, models.Model):
         return self.name
 
     def save(self, **kwargs):
-        if not self.id:
-            self.created_at = datetime.datetime.now()
         if not self.name:
             self.name = str(self.created_at)
-        self.updated_at = datetime.datetime.now()
         super(Room, self).save()
 
 
@@ -46,13 +44,37 @@ class RoomPlayer(CreatedUpdatedMixin, models.Model):
             return 'Null-Null-{}'.format(self.created_at)
         return '{room}-{player}'.format(room=self.room, player=self.player)
 
-    def save(self, **kwargs):
-        if not self.id:
-            self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
-        super(RoomPlayer, self).save()
+
+MONSTER_PLACE = (
+    ('DECK', '덱'),
+    ('DUNGEON', '던전'),
+    ('REMOVE', '제거'),
+    ('DEFEATED', '무찌름')
+)
 
 
+class Monster(CreatedUpdatedMixin, models.Model):
+    room = models.ForeignKey('Room', on_delete=models.CASCADE)
+    monster = models.ForeignKey('game.MonsterClass', on_delete=models.CASCADE)
+    order = models.PositiveSmallIntegerField(default=0, help_text='카드의 등장 순서')
+    place = models.CharField(max_length=16, choices=MONSTER_PLACE, default='DECK')
 
+
+ITEM_PLACE = (
+    ('EQUIPPED', '장비'),
+    ('REMOVE', '제거')
+)
+
+
+class Item(CreatedUpdatedMixin, models.Model):
+    room = models.ForeignKey('Room', on_delete=models.CASCADE)
+    item = models.ForeignKey('game.ItemClass', on_delete=models.CASCADE)
+    place = models.CharField(max_length=16, choices=ITEM_PLACE, default='EQUIPPED')
+
+
+class RemovedPackage(CreatedUpdatedMixin, models.Model):
+    room_player = models.ForeignKey('RoomPlayer', on_delete=models.CASCADE)
+    monster = models.ForeignKey('Monster', on_delete=models.CASCADE)
+    item = models.ForeignKey('Item', on_delete=models.CASCADE)
 
 
