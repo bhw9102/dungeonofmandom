@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from session.models import Player, Room, Round, RoomPlayer, Monster, Item, RemovedPackage
+from session.models import Player, Room, Round, RoomPlayer, Monster, Hero, Item, RemovedPackage
 
 
 class PlayerAdmin(ImportExportModelAdmin):
@@ -28,6 +28,11 @@ class MonsterAdmin(ImportExportModelAdmin):
     list_display_links = ('id', )
 
 
+class HeroAdmin(ImportExportModelAdmin):
+    list_display = ('id', 'round', )
+    list_display_links = ('id',)
+
+
 class ItemAdmin(ImportExportModelAdmin):
     list_display = ('id', 'round', 'item', 'place', )
     list_display_links = ('id', )
@@ -43,5 +48,6 @@ admin.site.register(Room, RoomAdmin)
 admin.site.register(Round, RoundAdmin)
 admin.site.register(RoomPlayer, RoomPlayerAdmin)
 admin.site.register(Monster, MonsterAdmin)
+admin.site.register(Hero, HeroAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(RemovedPackage, RemovedPackageAdmin)

@@ -102,6 +102,10 @@ ITEM_PLACE = (
 )
 
 
+class Hero(CreatedUpdatedMixin, models.Model):
+    round = models.ForeignKey('Round', on_delete=models.CASCADE)
+
+
 class Item(CreatedUpdatedMixin, models.Model):
     round = models.ForeignKey('Round', on_delete=models.CASCADE)
     item = models.ForeignKey('game.ItemClass', on_delete=models.CASCADE)
