@@ -24,3 +24,10 @@ class ImageMixin(models.Model):
         else:
             return 'about:blank'
 
+
+class CreatedUpdatedMixin(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, editable=False, help_text='생성 시간')
+    updated_at = models.DateTimeField(auto_now=True, editable=False, help_text='갱신 시간')
+
+    class Meta:
+        abstract = True
