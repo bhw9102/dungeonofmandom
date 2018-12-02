@@ -25,7 +25,7 @@ SECRET_KEY = 'h183*m1ds8kd%a$^wtdpknmb_2wf9vyr-x7kbnw@^w0io)yk&='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
+    'dungeonofmandom',
+    'game',
+    'session',
 ]
 
 MIDDLEWARE = [
