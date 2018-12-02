@@ -5,7 +5,7 @@ from .tools import build_file_path
 
 
 class NameDescMixin(models.Model):
-    name = models.CharField(max_length=32, help_text="이름")
+    name = models.CharField(max_length=32, unique=True, help_text="이름")
     desc = models.TextField(help_text="설명")
 
     class Meta:

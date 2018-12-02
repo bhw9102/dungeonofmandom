@@ -9,8 +9,7 @@ def build_file_path(instance, filename):
 
 
 def build_filename_format(instance, filename):
-    return "{id}-{name}{extension}".format(
-        id=instance.id,
+    return "{name}{extension}".format(
         name=instance.name,
         extension=os.path.splitext(filename)[1],
     )
