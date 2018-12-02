@@ -2,14 +2,14 @@ from django.db import models
 from dungeonofmandom.models import NameDescMixin, ImageMixin
 
 
-class JobClass(NameDescMixin, ImageMixin, models.Model):
+class HeroClass(NameDescMixin, ImageMixin, models.Model):
     health = models.PositiveSmallIntegerField(default=0, help_text="HP")
 
     def __str__(self):
         return self.name
 
 
-class EquipmentClass(NameDescMixin, ImageMixin, models.Model):
+class ItemClass(NameDescMixin, ImageMixin, models.Model):
     health = models.PositiveSmallIntegerField(default=0, help_text="HP")
     defeat = models.ManyToManyField('MonsterClass')
 

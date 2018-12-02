@@ -24,6 +24,8 @@ class Room(NameDescMixin, CreatedUpdatedMixin, models.Model):
     def save(self, **kwargs):
         if not self.id:
             self.created_at = datetime.datetime.now()
+        if not self.name:
+            self.name = str(self.created_at)
         self.updated_at = datetime.datetime.now()
         super(Room, self).save()
 
@@ -43,4 +45,14 @@ class RoomPlayer(CreatedUpdatedMixin, models.Model):
         if not bool(self.player) or not bool(self.room):
             return 'Null-Null-{}'.format(self.created_at)
         return '{room}-{player}'.format(room=self.room, player=self.player)
+
+    def save(self, **kwargs):
+        if not self.id:
+            self.created_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
+        super(RoomPlayer, self).save()
+
+
+
+
 
