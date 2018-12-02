@@ -15,8 +15,12 @@ class NameDescMixin(models.Model):
 class ImageMixin(models.Model):
     image = models.ImageField(blank=True, null=True, default=None, upload_to=partial(build_file_path))
 
+    class Meta:
+        abstract = True
+
     def image_url(self):
         if bool(self.image):
             return MEDIA_URL + self.image.url
         else:
             return 'about:blank'
+
