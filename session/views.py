@@ -6,3 +6,7 @@ from django.urls import reverse
 def index(request):
     return render(request, 'session/index.html')
 
+
+def entrance(request):
+    return render(request, 'session/entrance.html')
+
