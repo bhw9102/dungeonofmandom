@@ -19,7 +19,7 @@ from django.views.generic import RedirectView
 from django.urls import path
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='session/play/entrance', permanent=False), name='redirect_play'),
+    path('', RedirectView.as_view(url='session/play/index', permanent=False), name='redirect_play'),
     path('admin/', admin.site.urls),
     path('game/', include('game.urls')),
     path('session/', include('session.urls'))
