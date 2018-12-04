@@ -14,3 +14,8 @@ def entrance(request):
 def login(request):
     return render(request, 'session/login.html')
 
+
+def room_list(request):
+    return render(request, 'session/room_list.html')
+
+

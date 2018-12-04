@@ -7,6 +7,11 @@
 {% block body %}
   <h1>로그인</h1>
   <div>이름을 입력해 로그인합니다.</div>
+  <form method="POST" id="login-form">
+    {% csrf_token %}
+    <input type="text" name="player-name" value="{{ form.player_name }}">
+    <input type="submit" value="로그인">
+  </form>
 {% endblock %}
 
 {% block javascript %}
