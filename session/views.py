@@ -10,3 +10,7 @@ def index(request):
 def entrance(request):
     return render(request, 'session/entrance.html')
 
+
+def login(request):
+    return render(request, 'session/login.html')
+

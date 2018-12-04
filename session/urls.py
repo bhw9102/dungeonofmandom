@@ -9,7 +9,8 @@ urlpatterns = [
     path('play/', include([
         path('', RedirectView.as_view(url='index/', permanent=False), name='redirect_play'),
         path('index/', views.index, name='index'),
-        path('entrance/', views.entrance, name='entrance')
+        path('entrance/', views.entrance, name='entrance'),
+        path('login/', views.login, name='login')
     ]))
 ]
 
