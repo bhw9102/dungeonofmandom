@@ -4,7 +4,7 @@ from dungeonofmandom.models import NameDescMixin, CreatedUpdatedMixin
 from game.models import HeroClass, ItemClass, MonsterClass
 
 
-class Player(NameDescMixin, models.Model):
+class Player(NameDescMixin, CreatedUpdatedMixin, models.Model):
     def __str__(self):
         return self.name
 
