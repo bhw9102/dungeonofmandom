@@ -8,6 +8,9 @@
   <body>
     <h1>방 목록</h1>
     <div>참여하고자 하는 방을 목록에서 선택해주세요.</div>
+    {% for room in room_list %}
+      <div>{{ room }}</div>
+    {% endfor %}
   </body>
 {% endblock %}
 
