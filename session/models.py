@@ -96,20 +96,21 @@ class Monster(CreatedUpdatedMixin, models.Model):
         return '{}-{}'.format(self.round, self.monster)
 
 
+class Hero(CreatedUpdatedMixin, models.Model):
+    round = models.ForeignKey('Round', on_delete=models.CASCADE)
+
+
 ITEM_PLACE = (
     ('EQUIPPED', '장비'),
     ('REMOVE', '제거')
 )
 
 
-class Hero(CreatedUpdatedMixin, models.Model):
-    round = models.ForeignKey('Round', on_delete=models.CASCADE)
-
-
 class Item(CreatedUpdatedMixin, models.Model):
     round = models.ForeignKey('Round', on_delete=models.CASCADE)
     item = models.ForeignKey('game.ItemClass', on_delete=models.CASCADE)
     place = models.CharField(max_length=16, choices=ITEM_PLACE, default='EQUIPPED')
+    defeat = models.ManyToManyField('game.MonsterClass', blank=True, null=True)
 
 
 class RemovedPackage(CreatedUpdatedMixin, models.Model):
