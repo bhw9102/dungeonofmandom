@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from session.models import Player
+from session.models import Player, Room
+from session.models import ROOM_STATE
 from session.forms import NameForm
 from session.constants import *
 from django.core import serializers
@@ -43,6 +44,8 @@ def login(request):
 
 
 def room_list(request):
-    return render(request, 'session/room_list.html')
+    # GET
+    room_list_c = Room.objects.filter(state='READY').all()
+    return render(request, 'session/room_list.html', {CONST_ROOM_LIST: room_list_c})
 
 
