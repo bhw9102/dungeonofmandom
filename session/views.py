@@ -57,5 +57,6 @@ def create_room(request):
             return HttpResponseRedirect(reverse('room-list'))
     # GET
     form = RoomForm(initial={'name': ''})
+    print('jenkins test')
     return render(request, 'session/create_room.html', {'form': form})
 
