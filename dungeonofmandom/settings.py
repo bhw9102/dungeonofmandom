@@ -125,5 +125,5 @@ STATIC_URL = '/static/'
 
 # URL that handles the media served from MEDIA_ROOT.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = "http://mandom.develove.kr:8080/job/dungeonofmandom/ws/images/"
+MEDIA_URL = "http://mandom.develove.kr:8080/job/dungeonofmandom/ws/"
 
