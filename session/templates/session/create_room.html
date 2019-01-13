@@ -1,0 +1,18 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+  <h1>방 생성하기</h1>
+  <div>새로 만들 방의 이름을 입력하세요.</div>
+  <form method="POST" id="create-room-form">
+    {% csrf_token %}
+    <input type="text" name="name" value="{{ form.name.value }}">
+    <input type="submit" value="방 생성하기">
+  </form>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

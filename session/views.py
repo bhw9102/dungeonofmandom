@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from session.models import Player, Room
 from session.models import ROOM_STATE
-from session.forms import NameForm
+from session.forms import NameForm, RoomForm
 from session.constants import *
 from django.core import serializers
 
@@ -19,7 +19,6 @@ def entrance(request):
 def login(request):
     if request.method == "POST":
         form = NameForm(request.POST)
-        print(request.POST)
         if form.is_valid():
             name = form.cleaned_data[CONST_NAME]
             player = Player.objects.filter(name=name).first()
@@ -48,4 +47,15 @@ def room_list(request):
     room_list_c = Room.objects.filter(state='READY').all()
     return render(request, 'session/room_list.html', {CONST_ROOM_LIST: room_list_c})
 
+
+def create_room(request):
+    if request.method == "POST":
+        print(request.POST)
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            new_room = form.save()
+            return HttpResponseRedirect(reverse('room-list'))
+    # GET
+    form = RoomForm(initial={'name': ''})
+    return render(request, 'session/create_room.html', {'form': form})
 

@@ -7,10 +7,16 @@
 {% block body %}
   <body>
     <h1>방 목록</h1>
-    <div>참여하고자 하는 방을 목록에서 선택해주세요.</div>
-    {% for room in room_list %}
-      <div>{{ room }}</div>
-    {% endfor %}
+    <div>
+      <div>방 생성하기로 새로운 방을 만들 수 있습니다.</div>
+      <a href="/session/play/create-room/">방 생성하기</a>
+    </div>
+    <div>
+      <div>참여하고자 하는 방을 목록에서 선택해주세요.</div>
+      {% for room in room_list %}
+        <div>{{ room }}</div>
+      {% endfor %}
+    </div>
   </body>
 {% endblock %}
 
