@@ -12,7 +12,7 @@ class HeroClass(NameDescMixin, ImageMixin, models.Model):
 class ItemClass(NameDescMixin, ImageMixin, models.Model):
     hero = models.ForeignKey('HeroClass', on_delete=models.CASCADE)
     health = models.PositiveSmallIntegerField(default=0, help_text="HP")
-    defeat = models.ManyToManyField('MonsterClass', null=True, blank=True)
+    defeat = models.ManyToManyField('MonsterClass', blank=True)
 
     def __str__(self):
         return self.name

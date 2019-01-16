@@ -110,7 +110,7 @@ class Item(CreatedUpdatedMixin, models.Model):
     round = models.ForeignKey('Round', on_delete=models.CASCADE)
     item = models.ForeignKey('game.ItemClass', on_delete=models.CASCADE)
     place = models.CharField(max_length=16, choices=ITEM_PLACE, default='EQUIPPED')
-    defeat = models.ManyToManyField('game.MonsterClass', blank=True, null=True)
+    defeat = models.ManyToManyField('game.MonsterClass', blank=True)
 
 
 class RemovedPackage(CreatedUpdatedMixin, models.Model):
