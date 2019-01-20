@@ -1,5 +1,5 @@
 from django import forms
-from session.models import Player, Room
+from session.models import Player, Room, RoomPlayer
 
 
 class NameForm(forms.Form):
@@ -11,6 +11,11 @@ class RoomForm(forms.ModelForm):
         model = Room
         fields = ['name']
 
+
+class RoomPlayerForm(forms.ModelForm):
+    class Meta:
+        model = RoomPlayer
+        fields = ['room', 'player', 'state']
 
 
 
