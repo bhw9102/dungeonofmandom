@@ -42,10 +42,10 @@ def login(request):
     return render(request, 'session/login.html', {'form': form})
 
 
-def room_list(request):
+def robby(request):
     # GET
     room_list_c = Room.objects.filter(state='READY').all()
-    return render(request, 'session/room_list.html', {CONST_ROOM_LIST: room_list_c})
+    return render(request, 'session/robby.html', {CONST_ROOM_LIST: room_list_c})
 
 
 def create_room(request):
