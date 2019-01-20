@@ -71,7 +71,7 @@ def room_player(request):
         return HttpResponse(request)
     # GET
     form = RoomPlayerForm()
-    return render(request, 'session/page_post.html', {'form': form})
+    return render(request, 'session/post.html', {'form': form})
 
 
 def room(request):
